@@ -1,9 +1,8 @@
 <?php
 header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=Data_Evaluasi.xls");//ganti nama sesuai keperluan
+header("Content-Disposition: attachment; filename=Data_Evaluasi.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-//disini script laporan anda
 $no = 1;
 ?>
 
