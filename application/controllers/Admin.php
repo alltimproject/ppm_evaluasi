@@ -54,7 +54,10 @@ class Admin extends CI_Controller {
   {
     $this->load->view('admin/user');
   }
-
+  function error()
+  {
+    $this->load->view('admin/error');
+  }
 
   /* ----------------------- JSON DATA ---------------------------- */
   function json_pelatihan()

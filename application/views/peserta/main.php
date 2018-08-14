@@ -65,15 +65,15 @@
     </nav>
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
-    <div class="app-content content container-fluid" style="background: url('<?= base_url().'images/background.jpeg' ?>'); background-size: cover;">
+    <div class="app-content content container-fluid" style="background: url('<?= base_url().'images/background.jpeg' ?>'); background-size: cover; height: 100%;">
       <div class="content-wrapper" id="content"></div>
     </div>
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
 
-    <footer class="footer footer-static footer-light navbar-border">
+    <!-- <footer class="footer footer-static footer-light navbar-border">
       <p class="clearfix text-muted text-sm-center mb-0 px-2"><span class="float-md-left d-xs-block d-md-inline-block">Copyright  &copy; 2017 <a href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank" class="text-bold-800 grey darken-2">PIXINVENT </a>, All rights reserved. </span><span class="float-md-right d-xs-block d-md-inline-block">Hand-crafted & Made with <i class="icon-heart5 pink"></i></span></p>
-    </footer>
+    </footer> -->
 
     <!-- BEGIN VENDOR JS-->
     <script src="<?= base_url().'assets/app-assets/js/core/libraries/jquery.min.js' ?>" type="text/javascript"></script>

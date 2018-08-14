@@ -33,6 +33,11 @@ class Dosen extends CI_Controller {
     $this->load->view('dosen/detail', $data);
   }
 
+  function error()
+  {
+    $this->load->view('dosen/error');
+  }
+
 
   /* ----------------------- JSON DATA ---------------------------- */
 

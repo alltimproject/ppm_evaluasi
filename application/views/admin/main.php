@@ -162,6 +162,17 @@
             $.get(`<?= base_url().'admin/' ?>${href}`, function(content) {
                 $('#content').html(content);
             });
+            // $.ajax({
+            //   url: `<?= base_url().'admin/' ?>${href}`,
+            //   type: 'GET',
+            //   dataType: 'html',
+            //   success: function(content){
+            //     $('#content').html(content);
+            //   },
+            //   error: function(){
+            //     location.pushState = '#/error';
+            //   }
+            // });
         }
 
         $(window).on('hashchange', function() {

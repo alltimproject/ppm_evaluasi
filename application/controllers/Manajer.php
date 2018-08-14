@@ -58,6 +58,11 @@ class Manajer extends CI_Controller {
     echo json_encode($data);
   }
 
+  function error()
+  {
+    $this->load->view('manajer/error');
+  }
+
 
   /* ----------------------- JSON DATA ---------------------------- */
   function json_pelatihan()

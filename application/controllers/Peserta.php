@@ -25,6 +25,11 @@ class Peserta extends CI_Controller {
     $this->load->view('peserta/evaluasi');
   }
 
+  function error()
+  {
+    $this->load->view('peserta/error');
+  }
+
   function json_sesi()
   {
     $where = array(
