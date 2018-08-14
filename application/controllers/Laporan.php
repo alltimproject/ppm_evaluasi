@@ -9,6 +9,7 @@ class Laporan extends CI_Controller {
     $this->load->model('m_main');
     $this->load->model('m_master');
     $this->load->library('pdf');
+    $this->load->library('MC_TABLE');
   }
 
   function export_subyek()
@@ -82,7 +83,7 @@ class Laporan extends CI_Controller {
     $data = $this->m_master->show_penilaian($where)->result();
     $komentar = $this->m_master->show_komentar($where)->result();
 
-    $pdf = new FPDF('p','mm','A4');
+    $pdf = new MC_TABLE('p','mm','A4');
     $pdf->AddPage();
 
     $pdf->SetFont('Arial','B',10);
@@ -116,13 +117,149 @@ class Laporan extends CI_Controller {
       $pdf->Cell(50,7,': '.$key->jml_responden,0,0);
       $pdf->ln(15);
 
-      $pdf->SetFont('Arial','B',10);
-      $pdf->Cell(10,14,'No',1,0,'C');
-      $pdf->Cell(50,14,'Aspek',1,0,'C');
-      $pdf->Cell(90,7,'Penilaian',1,0,'C');
+      $pdf->cell(10.0,25.7,'No',1,0,'C');
+      $pdf->cell(45.0,25.7,'Aspek',1,0,'C');
+      // $posisi_2 = $pdf->GetX();
+      // $pdf->cell(85.0,10.4,'Penilaian',1,0,'C');
 
-      $pdf->Cell(20,14,'Rate',1,0,'C');
-      $pdf->Cell(15,14,'%',1,0,'C');
+
+
+      $posisi_x = $pdf->GetX();
+      $pdf->cell(99.4,20.4,'Penilaian',1,0,'C');
+
+    //  $posisi_5 = $pdf->GetX();
+      $pdf->cell(23.5,25.7,'Rata Rata',1,0,'C');
+      $pdf->cell(20.5,25.7,'%',1,0,'C');
+      $pdf->cell(20.5,20.5,'',0,1,'C');
+
+      $pdf->setX($posisi_x);
+      //$posisi_2 = $pdf->GetX();
+      $pdf->SetFont('Arial','B',8);
+      $pdf->cell(20.0,5.4,'sangat setuju',1,0,'C');
+      $pdf->cell(15.0,5.4,'setuju',1,0,'C');
+      $pdf->cell(15.0,5.4,'netral',1,0,'C');
+      $pdf->cell(22.0,5.4,'tidak setuju',1,0,'C');
+      $pdf->cell(27.3,5.4,'sangat tidak setuju',1,1,'C');
+
+      $pdf->SetWidths(array(10.0,45.0,20.0,15.0,15.0,22.0,27.3,23.7,20.5));
+        $pdf->Row(array(
+                    array('1'),
+                    array('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                    array('SHJSH'),
+                    array('SKJSK'),
+                    array('SKJSKJS'),
+                    array('SHSJS'),
+                    array('SJHSJ'),
+                    array('SHJSHS'),
+                    array('SJHSJ')
+
+        ));
+
+        $pdf->Row(array(
+                    array('1'),
+                    array('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                    array('SHJSH'),
+                    array('SKJSK'),
+                    array('SKJSKJS'),
+                    array('SHSJS'),
+                    array('SJHSJ'),
+                    array('SHJSHS'),
+                    array('SJHSJ')
+
+        ));
+
+        $pdf->Row(array(
+                    array('1'),
+                    array('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                    array('SHJSH'),
+                    array('SKJSK'),
+                    array('SKJSKJS'),
+                    array('SHSJS'),
+                    array('SJHSJ'),
+                    array('SHJSHS'),
+                    array('SJHSJ')
+
+        ));
+
+
+      // $pdf->setX($posisi_5);
+      // $pdf->cell(23.5,5.4,'','LR',0,'C');
+      // $pdf->cell(20.5,5.4,'','LR',1,'C');
+
+
+
+    //   $posisi_x = $pdf->GetX();
+    // $pdf->cell(224.2,3.5,'Spesifikasi Komputer',1,0,'C');
+    //
+    // $pdf->cell(23.5,3.5,'Tanda Tangan',1,1,'C',1);
+    //
+    // $pdf->setX($posisi_x);
+    // $posisi_2 = $pdf->GetX();
+    // $pdf->cell(80.0,5.4,'CPU',1,0,'C');
+    // $posisi_monitor = $pdf->GetX();
+    // $pdf->cell(20.4,5.4,'Monitor',1,0,'C');
+    // $posisi_printer = $pdf->GetX();
+    // $pdf->cell(65.3,5.4,'Printer',1,0,'C');
+    // $posisi_scanner = $pdf->GetX();
+    // $pdf->cell(58.6,5.4,'Scanner',1,0,'C');
+    //
+    // $posisi_ttd = $pdf->GetX();
+    // $pdf->cell(23.5,5.4,'User','LR',1,'C');
+    //
+    // $pdf->setFillColor(230, 242, 85);
+    // $pdf->setX($posisi_2);
+    // $pdf->Cell(22.5, 6.8, 'Type/Merk', 1, 0, 'C');
+    // $pdf->Cell(25.7, 6.8, 'Inventaris', 1, 0, 'C');
+    // $pdf->Cell(10.9, 6.8, 'Thn', 1, 0, 'C');
+    // $pdf->Cell(10.9, 6.8, 'Ram', 1, 0, 'C');
+    // $pdf->Cell(10.9, 6.8, 'HDD', 1, 0, 'C');
+    //
+    // $pdf->setX($posisi_monitor);
+    // $pdf->Cell(20.4, 6.8, 'Type/Merk', 1, 0, 'C',1);
+    // //$pdf->Cell(2.7, 0.8, 'Inventaris', 1, 0, 'C');
+    // //$pdf->Cell(0.9, 0.8, 'Thn', 1, 0, 'C');
+    //
+    // //printer
+    // $pdf->setX($posisi_printer);
+    // $pdf->Cell(30.7, 6.8, 'Type/Merk', 1, 0, 'C',1);
+    // $pdf->Cell(25.7, 6.8, 'Inventaris', 1, 0, 'C',1);
+    // $pdf->Cell(9.9, 6.8, 'Thn', 1, 0, 'C',1);
+    //
+    // //scanner
+    // $pdf->setX($posisi_scanner);
+    // $pdf->Cell(22.0, 6.8, 'Type/Merk', 1, 0, 'C',1);
+    // $pdf->Cell(25.7, 6.8, 'Inventaris', 1, 0, 'C',1);
+    // $pdf->Cell(10.9, 6.8, 'Thn', 1, 0, 'C',1);
+    //
+    // $pdf->setX($posisi_ttd);
+    // $pdf->cell(23.5,6.8,' ',1,1,'C', 1);
+    // $pdf->SetFont('Arial','B',7);
+
+
+    // $pdf->setFillColor(230, 242, 85);
+    // $pdf->setX($posisi_2);
+    // $pdf->Cell(22.5, 6.8, 'Type/Merk', 1, 0, 'C',1);
+    // $pdf->Cell(25.7, 6.8, 'Inventaris', 1, 0, 'C',1);
+    // $pdf->Cell(10.9, 6.8, 'Thn', 1, 0, 'C',1);
+    // $pdf->Cell(10.9, 6.8, 'Ram', 1, 0, 'C',1);
+    // $pdf->Cell(10.9, 6.8, 'HDD', 1, 0, 'C',1);
+
+
+
+      // $pdf->setX($posisi_2);
+      // $posisi_3 = $pdf->GetX();
+      // $pdf->Cell(30.5, 6.8, 'Type/Merk', 1, 0, 'C');
+      //
+      // $pdf->setX($posisi_3);
+      // $pdf->Cell(30.5, 6.8, 'Type/Merk', 1, 0, 'C');
+
+      // $pdf->setFillColor(230, 242, 85);
+      // $pdf->setX($posisi_2);
+      // $pdf->Cell(22.5, 20.4, 'sangat setuju', 1, 0, 'C',1);
+      // $pdf->Cell(25.7, 6.8, 'setuju', 1, 0, 'C',1);
+      // $pdf->Cell(10.9, 6.8, 'netral', 1, 0, 'C',1);
+      // $pdf->Cell(10.9, 6.8, 'tidak setuju', 1, 0, 'C',1);
+      // $pdf->Cell(10.9, 6.8, 'sangat tidak setuju', 1, 0, 'C',1);
 
     }
 
