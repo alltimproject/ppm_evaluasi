@@ -10,6 +10,16 @@
   <div class="row">
     <div class="col-xs-12">
         <div class="card">
+          <div class="card-header">
+            <div class="form-group">
+              <div class="position-relative has-icon-left">
+                <input type="text" class="form-control" placeholder="Masukkan Nama User" name="cari" id="cari">
+                  <div class="form-control-position">
+                    <i class="icon-search4"></i>
+                  </div>
+              </div>
+            </div>
+          </div>
             <div class="card-body collapse in">
                 <div class="table-responsive">
                     <table class="table table-hover" id="t_user" style="font-size:12px;">
@@ -117,7 +127,9 @@
         var no = 1;
 
         if(data.user.length == 0){
-          $('#t_user tbody').html('<tr><td colspan="7" align="center">Tidak ada data</td></tr>')
+          html += '<tr>';
+          html += `<td colspan="7" align="center">User tidak ditemukan</td>`;
+          html += '</tr>';
         } else {
           $.each(data.user, function(k, v){
             html += `<tr>`;
@@ -139,7 +151,14 @@
   }
 
   $(document).ready(function(){
+    var save_method;
+
     load_user();
+
+    $('#cari').on('keyup', function(){
+      var cari = $('#cari').val();
+      load_user(cari);
+    });
 
     $('#tambah').on('click', function(){
       save_method = 'tambah';
@@ -147,6 +166,7 @@
       $('#modal-user .modal-title').text('Tambah User');
       $('#modal-user #submit_user').removeClass().addClass('btn btn-outline-info').text('Save');
       $('.form-data')[0].reset();
+      $('#nip').removeAttr('readonly');
       $('.form-data #nip, .form-data #nama, .form-data #email, .form-data #telepon, .form-data #level').removeClass('border-danger');
       $('#modal-user').modal('show');
     });
@@ -158,7 +178,7 @@
       $('#modal-user #submit_user').removeClass().addClass('btn btn-outline-success').text('Update');
       $('.form-data #nip, .form-data #nama, .form-data #email, .form-data #telepon, .form-data #level').removeClass('border-danger');
 
-      $('#nip').val($(this).data('nip'));
+      $('#nip').val($(this).data('nip')).attr('readonly', '');
       $('#nama').val($(this).data('nama'));
       $('#email').val($(this).data('email'));
       $('#telepon').val($(this).data('telepon'));

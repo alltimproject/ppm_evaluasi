@@ -59,7 +59,15 @@ class Admin extends CI_Controller {
   /* ----------------------- JSON DATA ---------------------------- */
   function json_pelatihan()
   {
-    $data['pelatihan'] = $this->m_master->show_pelatihan()->result();
+    $cari = $this->input->post('cari');
+
+    if(isset($cari)){
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
+    $data['pelatihan'] = $this->m_master->show_pelatihan(null, $like)->result();
     echo json_encode($data);
   }
 
@@ -86,7 +94,15 @@ class Admin extends CI_Controller {
 
   function json_evaluasi()
   {
-    $data['evaluasi'] = $this->m_master->show_evaluasi()->result();
+    $cari = $this->input->post('cari');
+
+    if(isset($cari)){
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
+    $data['evaluasi'] = $this->m_master->show_evaluasi(null, $like)->result();
     echo json_encode($data);
   }
 
@@ -111,8 +127,16 @@ class Admin extends CI_Controller {
 
   function json_user()
   {
+    $cari = $this->input->post('cari');
+
+    if(isset($cari)){
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
     $where = 'level != "Admin"';
-    $data['user'] = $this->m_master->show_user($where)->result();
+    $data['user'] = $this->m_master->show_user($where, $like)->result();
     echo json_encode($data);
   }
 
@@ -309,13 +333,14 @@ class Admin extends CI_Controller {
   {
     switch ($aksi) {
       case 'tambah':
-        // $data = array(
-        //   'id_subyek' => $this->m_main->buatKode('t_subyek', 'SY', 'id_subyek', '8'),
-        //   'deskripsi_subyek' => $this->input->post('deskripsi_subyek'),
-        //   'tgl_mulai' => $this->input->post('tgl_mulai'),
-        //   'tgl_selesai' => $this->input->post('tgl_selesai'),
-        //   'kelas' => $this->input->post('kelas')
-        // );
+        $data = array(
+          'nip' => $this->input->post('nip'),
+          'nama' => $this->input->post('nama'),
+          'password' => sha1('admin'),
+          'email' => $this->input->post('email'),
+          'telepon' => $this->input->post('telepon'),
+          'level' => $this->input->post('level')
+        );
 
         $cek = $this->m_main->add_data('t_user', $data);
 
@@ -327,16 +352,16 @@ class Admin extends CI_Controller {
       break;
 
       case 'update':
-        // $where = array(
-        //   'id_subyek' => $this->input->post('id_subyek')
-        // );
-        //
-        // $data = array(
-        //   'deskripsi_subyek' => $this->input->post('deskripsi_subyek'),
-        //   'tgl_mulai' => $this->input->post('tgl_mulai'),
-        //   'tgl_selesai' => $this->input->post('tgl_selesai'),
-        //   'kelas' => $this->input->post('kelas')
-        // );
+        $where = array(
+          'nip' => $this->input->post('nip')
+        );
+
+        $data = array(
+          'nama' => $this->input->post('nama'),
+          'email' => $this->input->post('email'),
+          'telepon' => $this->input->post('telepon'),
+          'level' => $this->input->post('level')
+        );
 
         $cek = $this->m_main->edit_data('t_user', $data, $where);
 

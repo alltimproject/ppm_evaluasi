@@ -33,7 +33,7 @@
       return $this->db->get();
     }
 
-    function show_pelatihan($where = null)
+    function show_pelatihan($where = null, $like = null, $between = null)
     {
       $this->db->select('*');
       $this->db->select('(SELECT COUNT(id_sesi) FROM t_sesi WHERE t_sesi.id_subyek = t_subyek.id_subyek) as jml_sesi');
@@ -45,10 +45,19 @@
         $this->db->where($where);
       }
 
+      if($between != null){
+        $this->db->where($between);
+      }
+
+      if($like != null)
+      {
+        $this->db->like('deskripsi_subyek', $like);
+      }
+
       return $this->db->get();
     }
 
-    function show_sesi($where = null)
+    function show_sesi($where = null, $like = null)
     {
       $this->db->select('*');
       $this->db->from('t_sesi');
@@ -62,7 +71,7 @@
       return $this->db->get();
     }
 
-    function show_evaluasi($where = null)
+    function show_evaluasi($where = null, $like = null)
     {
       $this->db->select('a.id_sesi, a.deskripsi_sesi, a.status, b.nama, b.nip, c.deskripsi_subyek, c.kelas, c.tgl_mulai, c.tgl_selesai');
       $this->db->from('t_sesi a');
@@ -72,6 +81,11 @@
       if($where != null)
       {
         $this->db->where($where);
+      }
+
+      if($like != null)
+      {
+        $this->db->like('deskripsi_sesi', $like);
       }
 
       return $this->db->get();
@@ -180,7 +194,7 @@
       return $this->db->get();
     }
 
-    function evaluasi_peserta($where)
+    function evaluasi_peserta($where, $like = null)
     {
       $session = $this->session->userdata('id_peserta');
       $this->db->select('a.id_sesi, a.deskripsi_sesi, b.nip, b.nama');
@@ -193,7 +207,7 @@
       return $this->db->get();
     }
 
-    function show_user($where = null)
+    function show_user($where = null, $like = null)
     {
       $this->db->select('nip, nama, email, telepon, level');
       $this->db->from('t_user');
@@ -201,6 +215,11 @@
       if($where != null)
       {
         $this->db->where($where);
+      }
+
+      if($like != null)
+      {
+        $this->db->like('nama', $like);
       }
 
       return $this->db->get();

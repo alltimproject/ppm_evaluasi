@@ -12,6 +12,16 @@
   <div class="row">
     <div class="col-xs-12">
         <div class="card">
+          <div class="card-header">
+            <div class="form-group">
+              <div class="position-relative has-icon-left">
+                <input type="text" class="form-control" placeholder="Masukkan Nama Sesi" name="cari" id="cari">
+                  <div class="form-control-position">
+                    <i class="icon-search4"></i>
+                  </div>
+              </div>
+            </div>
+          </div>
             <div class="card-body collapse in">
                 <div class="table-responsive">
                     <table class="table" id="t_evaluasi" style="font-size: 12px;">
@@ -62,7 +72,12 @@
             html += `<td>${v.deskripsi_subyek}</td>`;
             html += `<td>${v.tgl_mulai} s/d ${v.tgl_selesai}</td>`;
             html += `<td>${v.kelas}</td>`;
-            html += `<td><a href="#/detail/${v.id_sesi}" class="btn btn-info btn-sm"><i class="icon-search4"></i> Detail</a></td>`;
+            if(v.status == 'Valid')
+            {
+              html += `<td><a href="#/detail/${v.id_sesi}" class="btn btn-info btn-sm"><i class="icon-search4"></i> Detail</a> <a href="<?= base_url().'laporan/detail_pdf/' ?>${v.id_sesi}" class="btn btn-danger btn-sm" target="_blank"><i class="icon-file-pdf"></i> PDF</a> <a href="<?= base_url().'laporan/detail_excel/' ?>${v.id_sesi}" class="btn btn-success btn-sm" target="_blank"><i class="icon-file-excel"></i> Excel</a></td>`;
+            } else {
+              html += `<td></td>`;
+            }
             html += '</tr>';
           });
         }
@@ -74,5 +89,10 @@
 
   $(document).ready(function(){
     load_evaluasi();
+
+    $('#cari').on('keyup', function(){
+      var cari = $('#cari').val();
+      load_evaluasi(cari);
+    });
   });
 </script>
