@@ -8,6 +8,10 @@ class Admin extends CI_Controller {
     parent::__construct();
     $this->load->model('m_main');
     $this->load->model('m_master');
+
+    if($this->session->userdata('login') != true){
+      redirect('auth/admin');
+    }
   }
 
 

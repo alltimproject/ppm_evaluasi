@@ -77,14 +77,9 @@
 
     <!-- main menu-->
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
-      <div class="main-menu-header">
-        <input type="text" placeholder="Search" class="menu-search form-control round"/>
-      </div>
+      <div class="main-menu-header"></div>
       <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-          <li>
-            <a href="#/dashboard"><i class="icon-home3"></i><span data-i18n="nav.changelog.main" class="menu-title">Dashboard</span></a>
-          </li>
           <li>
             <a href="#/evaluasi"><i class="icon-stats-dots"></i><span data-i18n="nav.changelog.main" class="menu-title">Evaluasi</span></a>
           </li>
@@ -155,6 +150,8 @@
         var load_content = function(href) {
             $.get(`<?= base_url().'dosen/' ?>${href}`, function(content) {
                 $('#content').html(content);
+            }).fail(function(jqXHR){
+              location.hash = '#/error';
             });
         }
 
@@ -167,7 +164,7 @@
             href = location.hash.substr(2);
             load_content(href);
         } else {
-            location.hash = '#/dashboard';
+            location.hash = '#/evaluasi';
         }
 
   			toastr.options = {

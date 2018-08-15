@@ -7,15 +7,31 @@ class Auth extends CI_Controller {
   {
     parent::__construct();
     $this->load->model('m_main');
+
+
   }
 
 	function index()
 	{
+    if($this->session->userdata('login') == true){
+      redirect('peserta/');
+    }
+
 		$this->load->view('login');
 	}
 
   function admin()
   {
+    if($this->session->userdata('login') == true){
+      if($this->session->userdata('level') == 'Admin'){
+        redirect('admin/');
+      } elseif($this->session->userdata('level') == 'Manajer'){
+        redirect('manajer/');
+      } else {
+        redirect('dosen/');
+      }
+    }
+
     $this->load->view('login_admin');
   }
 

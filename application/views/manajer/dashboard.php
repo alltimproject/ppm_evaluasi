@@ -138,7 +138,7 @@
           $('#jml_user').text(v.jml_user);
         });
 
-        $('#t_sesi tbody').html(html);
+        $('#t_valid tbody').html(html);
       }
     });
   }

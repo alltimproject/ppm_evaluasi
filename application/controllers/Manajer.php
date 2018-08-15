@@ -8,6 +8,10 @@ class Manajer extends CI_Controller {
     parent::__construct();
     $this->load->model('m_main');
     $this->load->model('m_master');
+
+    if($this->session->userdata('login') != true){
+      redirect('auth/admin');
+    }
   }
 
 
@@ -50,14 +54,6 @@ class Manajer extends CI_Controller {
     $this->load->view('manajer/detail', $data);
   }
 
-  function json_dashboard()
-  {
-    $where = array('a.status' => 'Valid');
-    $data['dashboard'] = $this->m_master->show_dashboard()->result();
-    $data['valid'] = $this->m_master->show_valid($where)->result();
-    echo json_encode($data);
-  }
-
   function error()
   {
     $this->load->view('manajer/error');
@@ -67,7 +63,15 @@ class Manajer extends CI_Controller {
   /* ----------------------- JSON DATA ---------------------------- */
   function json_pelatihan()
   {
-    $data['pelatihan'] = $this->m_master->show_pelatihan()->result();
+    $cari = $this->input->post('cari');
+
+    if(isset($cari)){
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
+    $data['pelatihan'] = $this->m_master->show_pelatihan(null, $like)->result();
     echo json_encode($data);
   }
 
@@ -94,7 +98,15 @@ class Manajer extends CI_Controller {
 
   function json_evaluasi()
   {
-    $data['evaluasi'] = $this->m_master->show_evaluasi()->result();
+    $cari = $this->input->post('cari');
+
+    if(isset($cari)){
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
+    $data['evaluasi'] = $this->m_master->show_evaluasi(null, $like)->result();
     echo json_encode($data);
   }
 
@@ -106,6 +118,14 @@ class Manajer extends CI_Controller {
 
     $data['sesi'] = $this->m_master->show_penilaian($where)->result();
     $data['komentar'] = $this->m_master->show_komentar($where)->result();
+    echo json_encode($data);
+  }
+
+  function json_dashboard()
+  {
+    $where = array('a.status' => 'Valid');
+    $data['dashboard'] = $this->m_master->show_dashboard()->result();
+    $data['valid'] = $this->m_master->show_valid($where)->result();
     echo json_encode($data);
   }
 

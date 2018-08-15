@@ -12,6 +12,16 @@
   <div class="row">
     <div class="col-xs-12">
         <div class="card">
+          <div class="card-header">
+            <div class="form-group">
+              <div class="position-relative has-icon-left">
+                <input type="text" class="form-control" placeholder="Masukkan Nama Sesi" name="cari" id="cari">
+                  <div class="form-control-position">
+                    <i class="icon-search4"></i>
+                  </div>
+              </div>
+            </div>
+          </div>
             <div class="card-body collapse in">
                 <div class="table-responsive">
                     <table class="table" id="t_evaluasi" style="font-size: 11px">
@@ -50,7 +60,7 @@
 
         if(data.evaluasi.length == 0){
           html += '<tr>';
-          html += `<td colspan="5" align="center">Tidak ada pelatihan</td>`;
+          html += `<td colspan="7" align="center">Tidak ada pelatihan</td>`;
           html += '</tr>';
         } else {
           $.each(data.evaluasi, function(k, v){
@@ -74,5 +84,10 @@
 
   $(document).ready(function(){
     load_evaluasi();
+
+    $('#cari').on('keyup', function(){
+      var cari = $('#cari').val();
+      load_evaluasi(cari);
+    });
   });
 </script>

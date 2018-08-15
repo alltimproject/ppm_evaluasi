@@ -117,150 +117,215 @@ class Laporan extends CI_Controller {
       $pdf->Cell(50,7,': '.$key->jml_responden,0,0);
       $pdf->ln(15);
 
-      $pdf->cell(10.0,25.7,'No',1,0,'C');
-      $pdf->cell(45.0,25.7,'Aspek',1,0,'C');
-      // $posisi_2 = $pdf->GetX();
-      // $pdf->cell(85.0,10.4,'Penilaian',1,0,'C');
+      // $pdf->cell(5.0,25.7,'No',1,0,'C');
+      $pdf->cell(35.0,25.7,'Aspek',1,0,'C');
 
 
 
       $posisi_x = $pdf->GetX();
-      $pdf->cell(99.4,20.4,'Penilaian',1,0,'C');
+      $pdf->cell(140,20.4,'Penilaian',1,0,'C');
 
-    //  $posisi_5 = $pdf->GetX();
-      $pdf->cell(23.5,25.7,'Rata Rata',1,0,'C');
-      $pdf->cell(20.5,25.7,'%',1,0,'C');
+      $pdf->cell(10.0,25.7,'Rate',1,0,'C');
+      $pdf->cell(10.0,25.7,'%',1,0,'C');
       $pdf->cell(20.5,20.5,'',0,1,'C');
 
       $pdf->setX($posisi_x);
-      //$posisi_2 = $pdf->GetX();
       $pdf->SetFont('Arial','B',8);
-      $pdf->cell(20.0,5.4,'sangat setuju',1,0,'C');
-      $pdf->cell(15.0,5.4,'setuju',1,0,'C');
-      $pdf->cell(15.0,5.4,'netral',1,0,'C');
-      $pdf->cell(22.0,5.4,'tidak setuju',1,0,'C');
-      $pdf->cell(27.3,5.4,'sangat tidak setuju',1,1,'C');
+      $pdf->cell(28.0,5.4,'Sangat Setuju',1,0,'C');
+      $pdf->cell(28.0,5.4,'Setuju',1,0,'C');
+      $pdf->cell(28.0,5.4,'Netral',1,0,'C');
+      $pdf->cell(28.0,5.4,'Tidak Setuju',1,0,'C');
+      $pdf->cell(28.0,5.4,'Sangat Tidak Setuju',1,1,'C');
 
-      $pdf->SetWidths(array(10.0,45.0,20.0,15.0,15.0,22.0,27.3,23.7,20.5));
+      $pdf->SetWidths(array(35.0,14.0,14.0,14.0,14.0,14.0,14.0,14.0,14.0,14.0,14.0,10.0,10.0));
         $pdf->Row(array(
-                    array('1'),
-                    array('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-                    array('SHJSH'),
-                    array('SKJSK'),
-                    array('SKJSKJS'),
-                    array('SHSJS'),
-                    array('SJHSJ'),
-                    array('SHJSHS'),
-                    array('SJHSJ')
+                    // array('1', 'C'),
+                    array('Pelatihan ini bermanfaat bagi saya'),
+                    array($key->aspek1_1, 'C'),
+                    array(round(($key->aspek1_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek1_2, 'C'),
+                    array(round(($key->aspek1_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek1_3, 'C'),
+                    array(round(($key->aspek1_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek1_4, 'C'),
+                    array(round(($key->aspek1_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek1_5, 'C'),
+                    array(round(($key->aspek1_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek1_1*5)+($key->aspek1_2*4)+($key->aspek1_3*3)+($key->aspek1_4*2)+($key->aspek1_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
         ));
 
         $pdf->Row(array(
-                    array('1'),
-                    array('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-                    array('SHJSH'),
-                    array('SKJSK'),
-                    array('SKJSKJS'),
-                    array('SHSJS'),
-                    array('SJHSJ'),
-                    array('SHJSHS'),
-                    array('SJHSJ')
+                    // array('2', 'C'),
+                    array('Instruktur menyampaikan materi dengan jelas'),
+                    array($key->aspek2_1, 'C'),
+                    array(round(($key->aspek2_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek2_2, 'C'),
+                    array(round(($key->aspek2_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek2_3, 'C'),
+                    array(round(($key->aspek2_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek2_4, 'C'),
+                    array(round(($key->aspek2_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek2_5, 'C'),
+                    array(round(($key->aspek2_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek2_1*5)+($key->aspek2_2*4)+($key->aspek2_3*3)+($key->aspek2_4*2)+($key->aspek2_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
         ));
 
         $pdf->Row(array(
-                    array('1'),
-                    array('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-                    array('SHJSH'),
-                    array('SKJSK'),
-                    array('SKJSKJS'),
-                    array('SHSJS'),
-                    array('SJHSJ'),
-                    array('SHJSHS'),
-                    array('SJHSJ')
+                    // array('3', 'C'),
+                    array('Metode Pengajaran yang digunakan Menarik'),
+                    array($key->aspek3_1, 'C'),
+                    array(round(($key->aspek3_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek3_2, 'C'),
+                    array(round(($key->aspek3_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek3_3, 'C'),
+                    array(round(($key->aspek3_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek3_4, 'C'),
+                    array(round(($key->aspek3_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek3_5, 'C'),
+                    array(round(($key->aspek3_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek3_1*5)+($key->aspek3_2*4)+($key->aspek3_3*3)+($key->aspek3_4*2)+($key->aspek3_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
         ));
 
+        $pdf->Row(array(
+                    // array('4', 'C'),
+                    array('Kombinasi teori dan latihan seimbang'),
+                    array($key->aspek4_1, 'C'),
+                    array(round(($key->aspek4_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek4_2, 'C'),
+                    array(round(($key->aspek4_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek4_3, 'C'),
+                    array(round(($key->aspek4_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek4_4, 'C'),
+                    array(round(($key->aspek4_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek4_5, 'C'),
+                    array(round(($key->aspek4_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek4_1*5)+($key->aspek4_2*4)+($key->aspek4_3*3)+($key->aspek4_4*2)+($key->aspek4_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
-      // $pdf->setX($posisi_5);
-      // $pdf->cell(23.5,5.4,'','LR',0,'C');
-      // $pdf->cell(20.5,5.4,'','LR',1,'C');
+        ));
 
+        $pdf->Row(array(
+                    // array('5', 'C'),
+                    array('Jumlah subyek sesuai dengan kebutuhan'),
+                    array($key->aspek5_1, 'C'),
+                    array(round(($key->aspek5_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek5_2, 'C'),
+                    array(round(($key->aspek5_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek5_3, 'C'),
+                    array(round(($key->aspek5_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek5_4, 'C'),
+                    array(round(($key->aspek5_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek5_5, 'C'),
+                    array(round(($key->aspek5_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek5_1*5)+($key->aspek5_2*4)+($key->aspek5_3*3)+($key->aspek5_4*2)+($key->aspek5_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
+        ));
 
-    //   $posisi_x = $pdf->GetX();
-    // $pdf->cell(224.2,3.5,'Spesifikasi Komputer',1,0,'C');
-    //
-    // $pdf->cell(23.5,3.5,'Tanda Tangan',1,1,'C',1);
-    //
-    // $pdf->setX($posisi_x);
-    // $posisi_2 = $pdf->GetX();
-    // $pdf->cell(80.0,5.4,'CPU',1,0,'C');
-    // $posisi_monitor = $pdf->GetX();
-    // $pdf->cell(20.4,5.4,'Monitor',1,0,'C');
-    // $posisi_printer = $pdf->GetX();
-    // $pdf->cell(65.3,5.4,'Printer',1,0,'C');
-    // $posisi_scanner = $pdf->GetX();
-    // $pdf->cell(58.6,5.4,'Scanner',1,0,'C');
-    //
-    // $posisi_ttd = $pdf->GetX();
-    // $pdf->cell(23.5,5.4,'User','LR',1,'C');
-    //
-    // $pdf->setFillColor(230, 242, 85);
-    // $pdf->setX($posisi_2);
-    // $pdf->Cell(22.5, 6.8, 'Type/Merk', 1, 0, 'C');
-    // $pdf->Cell(25.7, 6.8, 'Inventaris', 1, 0, 'C');
-    // $pdf->Cell(10.9, 6.8, 'Thn', 1, 0, 'C');
-    // $pdf->Cell(10.9, 6.8, 'Ram', 1, 0, 'C');
-    // $pdf->Cell(10.9, 6.8, 'HDD', 1, 0, 'C');
-    //
-    // $pdf->setX($posisi_monitor);
-    // $pdf->Cell(20.4, 6.8, 'Type/Merk', 1, 0, 'C',1);
-    // //$pdf->Cell(2.7, 0.8, 'Inventaris', 1, 0, 'C');
-    // //$pdf->Cell(0.9, 0.8, 'Thn', 1, 0, 'C');
-    //
-    // //printer
-    // $pdf->setX($posisi_printer);
-    // $pdf->Cell(30.7, 6.8, 'Type/Merk', 1, 0, 'C',1);
-    // $pdf->Cell(25.7, 6.8, 'Inventaris', 1, 0, 'C',1);
-    // $pdf->Cell(9.9, 6.8, 'Thn', 1, 0, 'C',1);
-    //
-    // //scanner
-    // $pdf->setX($posisi_scanner);
-    // $pdf->Cell(22.0, 6.8, 'Type/Merk', 1, 0, 'C',1);
-    // $pdf->Cell(25.7, 6.8, 'Inventaris', 1, 0, 'C',1);
-    // $pdf->Cell(10.9, 6.8, 'Thn', 1, 0, 'C',1);
-    //
-    // $pdf->setX($posisi_ttd);
-    // $pdf->cell(23.5,6.8,' ',1,1,'C', 1);
-    // $pdf->SetFont('Arial','B',7);
+        $pdf->Row(array(
+                    // array('6', 'C'),
+                    array('Bahan bacaan membantu proses belajar'),
+                    array($key->aspek6_1, 'C'),
+                    array(round(($key->aspek6_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek6_2, 'C'),
+                    array(round(($key->aspek6_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek6_3, 'C'),
+                    array(round(($key->aspek6_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek6_4, 'C'),
+                    array(round(($key->aspek6_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek6_5, 'C'),
+                    array(round(($key->aspek6_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek6_1*5)+($key->aspek6_2*4)+($key->aspek6_3*3)+($key->aspek6_4*2)+($key->aspek6_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
+        ));
 
-    // $pdf->setFillColor(230, 242, 85);
-    // $pdf->setX($posisi_2);
-    // $pdf->Cell(22.5, 6.8, 'Type/Merk', 1, 0, 'C',1);
-    // $pdf->Cell(25.7, 6.8, 'Inventaris', 1, 0, 'C',1);
-    // $pdf->Cell(10.9, 6.8, 'Thn', 1, 0, 'C',1);
-    // $pdf->Cell(10.9, 6.8, 'Ram', 1, 0, 'C',1);
-    // $pdf->Cell(10.9, 6.8, 'HDD', 1, 0, 'C',1);
+        $pdf->Row(array(
+                    // array('7', 'C'),
+                    array('Fasilitas mengajar membantu (peralatan dan ruangan)'),
+                    array($key->aspek7_1, 'C'),
+                    array(round(($key->aspek7_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek7_2, 'C'),
+                    array(round(($key->aspek7_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek7_3, 'C'),
+                    array(round(($key->aspek7_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek7_4, 'C'),
+                    array(round(($key->aspek7_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek7_5, 'C'),
+                    array(round(($key->aspek7_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek7_1*5)+($key->aspek7_2*4)+($key->aspek7_3*3)+($key->aspek7_4*2)+($key->aspek7_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
+        ));
 
+        $pdf->Row(array(
+                    // array('8', 'C'),
+                    array('Partisipasi peserta lain sesuai harapan saya'),
+                    array($key->aspek8_1, 'C'),
+                    array(round(($key->aspek8_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek8_2, 'C'),
+                    array(round(($key->aspek8_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek8_3, 'C'),
+                    array(round(($key->aspek8_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek8_4, 'C'),
+                    array(round(($key->aspek8_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek8_5, 'C'),
+                    array(round(($key->aspek8_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek8_1*5)+($key->aspek8_2*4)+($key->aspek8_3*3)+($key->aspek8_4*2)+($key->aspek8_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
-      // $pdf->setX($posisi_2);
-      // $posisi_3 = $pdf->GetX();
-      // $pdf->Cell(30.5, 6.8, 'Type/Merk', 1, 0, 'C');
-      //
-      // $pdf->setX($posisi_3);
-      // $pdf->Cell(30.5, 6.8, 'Type/Merk', 1, 0, 'C');
+        ));
 
-      // $pdf->setFillColor(230, 242, 85);
-      // $pdf->setX($posisi_2);
-      // $pdf->Cell(22.5, 20.4, 'sangat setuju', 1, 0, 'C',1);
-      // $pdf->Cell(25.7, 6.8, 'setuju', 1, 0, 'C',1);
-      // $pdf->Cell(10.9, 6.8, 'netral', 1, 0, 'C',1);
-      // $pdf->Cell(10.9, 6.8, 'tidak setuju', 1, 0, 'C',1);
-      // $pdf->Cell(10.9, 6.8, 'sangat tidak setuju', 1, 0, 'C',1);
+        $pdf->Row(array(
+                    // array('9', 'C'),
+                    array('Pelayanan lainnya baik (misal: parkir, customer service)'),
+                    array($key->aspek9_1, 'C'),
+                    array(round(($key->aspek9_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek9_2, 'C'),
+                    array(round(($key->aspek9_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek9_3, 'C'),
+                    array(round(($key->aspek9_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek9_4, 'C'),
+                    array(round(($key->aspek9_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek9_5, 'C'),
+                    array(round(($key->aspek9_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek9_1*5)+($key->aspek9_2*4)+($key->aspek9_3*3)+($key->aspek9_4*2)+($key->aspek9_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
 
+        ));
+
+        $pdf->Row(array(
+                    // array('10', 'C'),
+                    array('Secara keseluruhan saya puas'),
+                    array($key->aspek10_1, 'C'),
+                    array(round(($key->aspek10_1/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek10_2, 'C'),
+                    array(round(($key->aspek10_2/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek10_3, 'C'),
+                    array(round(($key->aspek10_3/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek10_4, 'C'),
+                    array(round(($key->aspek10_4/$key->jml_responden)*100).'%', 'C'),
+                    array($key->aspek10_5, 'C'),
+                    array(round(($key->aspek10_5/$key->jml_responden)*100).'%', 'C'),
+                    array(round((($key->aspek10_1*5)+($key->aspek10_2*4)+($key->aspek10_3*3)+($key->aspek10_4*2)+($key->aspek10_5*1))/$key->jml_peserta,2), 'C'),
+                    array('100%', 'C')
+
+        ));
+    }
+
+    $pdf->ln(10);
+    $pdf->SetFont('Arial','B',10);
+    $pdf->Cell(100,7,'Saran dan Komentar : ',0,1);
+
+    $pdf->SetFont('Arial','',10);
+    foreach ($komentar as $key2) {
+      $pdf->Cell(100,5,'- '.$key2->komentar,0,1);
     }
 
     $pdf->Output();

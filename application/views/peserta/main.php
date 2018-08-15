@@ -98,6 +98,8 @@
         var load_content = function(href) {
             $.get(`<?= base_url().'peserta/' ?>${href}`, function(content) {
                 $('#content').html(content);
+            }).fail(function(jqXHR){
+              location.hash = '#/error';
             });
         }
 

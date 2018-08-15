@@ -8,6 +8,10 @@ class Dosen extends CI_Controller {
     parent::__construct();
     $this->load->model('m_main');
     $this->load->model('m_master');
+
+    if($this->session->userdata('login') != true){
+      redirect('auth/admin');
+    }
   }
 
 
@@ -16,11 +20,6 @@ class Dosen extends CI_Controller {
 	{
 		$this->load->view('dosen/main');
 	}
-
-  function dashboard()
-  {
-    $this->load->view('dosen/dashboard');
-  }
 
   function evaluasi()
   {
@@ -43,11 +42,20 @@ class Dosen extends CI_Controller {
 
   function json_evaluasi()
   {
+
+    $cari = $this->input->post('cari');
+
+    if(isset($cari)){
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
     $where = array(
       'b.nip' => $this->session->userdata('nip')
     );
 
-    $data['evaluasi'] = $this->m_master->show_evaluasi($where)->result();
+    $data['evaluasi'] = $this->m_master->show_evaluasi($where, $like)->result();
     echo json_encode($data);
   }
 

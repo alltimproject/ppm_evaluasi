@@ -77,9 +77,7 @@
 
     <!-- main menu-->
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
-      <div class="main-menu-header">
-        <input type="text" placeholder="Search" class="menu-search form-control round"/>
-      </div>
+      <div class="main-menu-header"></div>
       <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
           <li>
@@ -158,21 +156,13 @@
     <script src="<?= base_url().'assets/app-assets/js/core/app.js' ?>" type="text/javascript"></script>
     <script type="text/javascript">
       $(document).ready(function(){
+
         var load_content = function(href) {
             $.get(`<?= base_url().'admin/' ?>${href}`, function(content) {
                 $('#content').html(content);
+            }).fail(function(jqXHR){
+              location.hash = '#/error';
             });
-            // $.ajax({
-            //   url: `<?= base_url().'admin/' ?>${href}`,
-            //   type: 'GET',
-            //   dataType: 'html',
-            //   success: function(content){
-            //     $('#content').html(content);
-            //   },
-            //   error: function(){
-            //     location.pushState = '#/error';
-            //   }
-            // });
         }
 
         $(window).on('hashchange', function() {
