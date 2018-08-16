@@ -8,7 +8,7 @@
         <div class="card-footer bg-transparent pb-0">
             <div class="row">
               <h1><p class="text-danger" style="text-align: center;">Oops Error Detected !</p></h1>
-              <p class="text-muted" style="text-align: center;">Please Back to Available Menu Thanks !</p>
+              <p class="text-muted" style="text-align: center;">Please Go Back to Previous Page !</p>
             </div>
         </div>
     </div>
