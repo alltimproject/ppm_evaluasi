@@ -53,7 +53,9 @@
                       <tr>
                         <th>ID</th>
                         <th>Deskripsi Sesi</th>
-                        <th>Pengajar</th>
+                        <th>Tgl Sesi</th>
+                        <th>Waktu Sesi</th>
+                        <th>Dosen</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -80,6 +82,18 @@
               <div class="form-group">
                 <label for="deskripsi_sesi">Deskripsi Sesi</label>
                 <input type="text" name="deskripsi_sesi" class="form-control" id="deskripsi_sesi">
+              </div>
+              <div class="form-group">
+                <label for="nip">Tanggal Sesi</label>
+                <input type="date" name="tgl_sesi" class="form-control" id="tgl_sesi">
+              </div>
+              <div class="form-group">
+                <label for="nip">Waktu Sesi</label>
+                <select class="form-control" name="waktu_sesi" id="waktu_sesi">
+                  <option value="">-- Pilih Waktu Sesi -- </option>
+                  <option value="Pagi">Pagi</option>
+                  <option value="Siang">Siang</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="nip">Dosen</label>
@@ -143,8 +157,10 @@
             html += '<tr>';
             html += `<td>${v.id_sesi}</td>`;
             html += `<td>${v.deskripsi_sesi}</td>`;
+            html += `<td>${v.tgl_sesi}</td>`;
+            html += `<td>${v.waktu_sesi}</td>`;
             html += `<td>${v.nama}</td>`;
-            html += `<td><button class="btn btn-sm btn-success" id="update" data-id="${v.id_sesi}" data-deskripsi="${v.deskripsi_sesi}" data-nip="${v.nip}"><i class="icon-pencil22"></i></button> `;
+            html += `<td><button class="btn btn-sm btn-success" id="update" data-id="${v.id_sesi}" data-deskripsi="${v.deskripsi_sesi}" data-nip="${v.nip}" data-tgl="${v.tgl_sesi}" data-waktu="${v.waktu_sesi}"><i class="icon-pencil22"></i></button> `;
             html += `<button class="btn btn-sm btn-danger" id="hapus" data-id="${v.id_sesi}"><i class="icon-cross"></i></button></td>`;
             html += '</tr>';
           });
@@ -191,6 +207,8 @@
 
       $('#id_sesi').val($(this).data('id'));
       $('#deskripsi_sesi').val($(this).data('deskripsi'));
+      $('#tgl_sesi').val($(this).data('tgl'));
+      $('#waktu_sesi').val($(this).data('waktu'));
       $('#nip').val($(this).data('nip'));
       $('#modal-sesi').modal('show');
     });

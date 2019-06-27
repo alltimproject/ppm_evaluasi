@@ -284,6 +284,8 @@ class Admin extends CI_Controller {
           'id_sesi' => $this->m_main->buatKode('t_sesi', 'SS', 'id_sesi', '8'),
           'id_subyek' => $this->input->post('id_subyek'),
           'deskripsi_sesi' => $this->input->post('deskripsi_sesi'),
+          'tgl_sesi'  => $this->input->post('tgl_sesi'),
+          'waktu_sesi'  => $this->input->post('waktu_sesi'),
           'nip' => $this->input->post('nip'),
           'status' => 'Proses'
         );
@@ -304,6 +306,8 @@ class Admin extends CI_Controller {
 
         $data = array(
           'deskripsi_sesi' => $this->input->post('deskripsi_sesi'),
+          'tgl_sesi'  => $this->input->post('tgl_sesi'),
+          'waktu_sesi'  => $this->input->post('waktu_sesi'),
           'nip' => $this->input->post('nip')
         );
 
