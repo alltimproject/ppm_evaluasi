@@ -32,7 +32,7 @@ class Laporan extends CI_Controller {
 
       $pdf->SetFont('Arial','B',10);
       $pdf->Cell(80);
-      $pdf->Cell(30,5,'Laporan Evaluasi',0,1,'C');
+      $pdf->Cell(30,5,'Laporan Pelatihan',0,1,'C');
       $pdf->ln(10);
 
 			$pdf->SetFont('Arial','',10);

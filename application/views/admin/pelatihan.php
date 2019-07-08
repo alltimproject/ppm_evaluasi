@@ -157,8 +157,8 @@
             html += `<td>${v.deskripsi_subyek}</td>`;
             html += `<td>${v.tgl_mulai} s/d ${v.tgl_selesai}</td>`;
             html += `<td>${v.kelas}</td>`;
-            html += `<td><button class="btn btn-success btn-sm" id="update" data-id_subyek="${v.id_subyek}" data-deskripsi="${v.deskripsi_subyek}" data-mulai="${v.tgl_mulai}" data-selesai="${v.tgl_selesai}" data-kelas="${v.kelas}"><i class="icon-pencil22"></i></button> `;
-            html += `<button class="btn btn-danger btn-sm" id="hapus" data-id="${v.id_subyek}"><i class="icon-cross"></i></button></td>`;
+            html += `<td><button class="btn btn-success btn-sm" id="update" data-id_subyek="${v.id_subyek}" data-deskripsi="${v.deskripsi_subyek}" data-mulai="${v.tgl_mulai}" data-selesai="${v.tgl_selesai}" data-kelas="${v.kelas}"><i class="icon-pencil22"></i> Edit</button> `;
+            html += `<button class="btn btn-danger btn-sm" id="hapus" data-id="${v.id_subyek}"><i class="icon-cross"></i> Hapus</button></td>`;
             html += `<td><a href="#/peserta/${v.id_subyek}" class="btn btn-sm btn-info">Peserta <span class="tag tag-danger">${v.jml_peserta}</span></a>`;
             html += ` <a href="#/sesi/${v.id_subyek}" class="btn btn-sm btn-primary">Sesi <span class="tag tag-danger">${v.jml_sesi}</span></a></td>`;
             html += '</tr>';

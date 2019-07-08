@@ -160,8 +160,8 @@
             html += `<td>${v.tgl_sesi}</td>`;
             html += `<td>${v.waktu_sesi}</td>`;
             html += `<td>${v.nama}</td>`;
-            html += `<td><button class="btn btn-sm btn-success" id="update" data-id="${v.id_sesi}" data-deskripsi="${v.deskripsi_sesi}" data-nip="${v.nip}" data-tgl="${v.tgl_sesi}" data-waktu="${v.waktu_sesi}"><i class="icon-pencil22"></i></button> `;
-            html += `<button class="btn btn-sm btn-danger" id="hapus" data-id="${v.id_sesi}"><i class="icon-cross"></i></button></td>`;
+            html += `<td><button class="btn btn-sm btn-success" id="update" data-id="${v.id_sesi}" data-deskripsi="${v.deskripsi_sesi}" data-nip="${v.nip}" data-tgl="${v.tgl_sesi}" data-waktu="${v.waktu_sesi}"><i class="icon-pencil22"></i> Edit</button> `;
+            html += `<button class="btn btn-sm btn-danger" id="hapus" data-id="${v.id_sesi}"><i class="icon-cross"></i> Hapus</button></td>`;
             html += '</tr>';
           });
         }

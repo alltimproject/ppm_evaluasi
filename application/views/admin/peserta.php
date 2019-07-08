@@ -155,8 +155,8 @@
             html += `<td>${v.email}</td>`;
             html += `<td>${v.telepon}</td>`;
             html += `<td>${v.alamat}</td>`;
-            html += `<td><button class="btn btn-sm btn-success" id="update" data-id="${v.id_peserta}" data-nama="${v.nama_peserta}" data-email="${v.email}" data-telepon="${v.telepon}" data-alamat="${v.alamat}"><i class="icon-pencil22"></i></button> `;
-            html += `<button class="btn btn-sm btn-danger" id="hapus" data-id="${v.id_peserta}"><i class="icon-cross"></i></button></td>`;
+            html += `<td><button class="btn btn-sm btn-success" id="update" data-id="${v.id_peserta}" data-nama="${v.nama_peserta}" data-email="${v.email}" data-telepon="${v.telepon}" data-alamat="${v.alamat}"><i class="icon-pencil22"></i> Edit</button> `;
+            html += `<button class="btn btn-sm btn-danger" id="hapus" data-id="${v.id_peserta}"><i class="icon-cross"></i> Hapus</button></td>`;
             html += '</tr>';
           });
         }
